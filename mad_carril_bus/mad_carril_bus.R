@@ -63,5 +63,5 @@ htmlwidgets::saveWidget(m, "mad_carril_bus/index.html",
   title = "PGOUM 2021: Carril Bus"
 )
 
-st_write(signbus,"mad_carril_bus/sign.geojson")
+st_write(signgeo,"mad_carril_bus/sign.geojson")
 
