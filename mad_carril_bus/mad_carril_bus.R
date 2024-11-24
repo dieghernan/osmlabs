@@ -12,6 +12,27 @@ cbus <- viales %>%
   filter(Car_Bus == "SI") %>%
   select(Calles)
 
+# Señales
+
+sign <- read_delim("~/R/Projects/señalizacion_vertical.csv", 
+                   locale = locale(decimal_mark = ",", 
+                                   grouping_mark = "."),
+                   delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+db <- sign %>%
+  select(`Tipo de Señalización`, Código, Descripción) %>%
+  distinct() %>%
+  filter(str_detect(Descripción, "Carril")) %>%
+  filter(str_detect(Descripción, "bus|Bus")) 
+
+signbus <- sign %>%
+  filter(Código %in% db$Código) %>%
+  filter(is.na(`Fecha de Baja`)) 
+signgeo <- signbus %>%
+  st_as_sf(coords = c("Gis_X", "Gis_Y"), crs = st_crs(25830)) %>%
+  st_transform(4326)
+
+
 m <- leaflet() %>%
   addTiles(
     options = tileOptions(opacity = 1),
@@ -23,11 +44,7 @@ m <- leaflet() %>%
     group = "IGN Base Gris"
   ) %>%
   addProviderEspTiles(provider = "PNOA", group = "PNOA") %>%
-  addPolylines(
-    data = cbus,
-    fillOpacity = 1,
-    group = "Carril Bus"
-  ) %>%
+  addMarkers(data = signgeo, label = ~Barrio) %>%
   addLayersControl(
     baseGroups = c(
       "OSM (Mapnik)",
@@ -45,3 +62,6 @@ htmlwidgets::saveWidget(m, "mad_carril_bus/index.html",
   libdir = "deps",
   title = "PGOUM 2021: Carril Bus"
 )
+
+st_write(signbus,"mad_carril_bus/sign.geojson")
+

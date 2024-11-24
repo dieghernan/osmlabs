@@ -83,3 +83,15 @@ htmlwidgets::saveWidget(m, "PGOUM/index.html",
   libdir = "deps",
   title = "PGOUM: Red Estructurante"
 )
+
+# Export
+
+ls <- list.files("PGOUM/dist", full.names = TRUE)
+
+unlink(ls)
+
+st_write(metropol, "PGOUM/dist/metropol.geojson")
+st_write(urbana, "PGOUM/dist/urbana.geojson")
+st_write(distrital, "PGOUM/dist/distrital.geojson")
+st_write(local, "PGOUM/dist/local.geojson")
+
