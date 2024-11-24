@@ -1,0 +1,35 @@
+Información de capas suministradas en "MPRED ESTRUCTURANTE" y campos con su definición
+   	
+	CALZADAS : Capa con las entidades de calzadas y carriles bus pertenecientes a la RED ESTRUCTURANTE. 
+		 
+        -DISTRITO 		: El distrito al que pertenece la entidad.
+				
+		-SUBTRAMO 		: El código unívoco de la entidad.
+				
+        -SVIA_ID 		: EL código del subvial normalizado de la cartografía oficial de la que procede la entidad de la .gdb. Los códigos de las calzadas se corresponden con la cartografía del 2019.
+          		
+		-CALLES 		: nombre/s oficial/es de la/s calle/s asignada/s al subvial.
+          		
+		-COMPETEN 		: (RED ESTRUCTURANTE / RED SECUNDARIA). Es la clasificación de la red viaria de acuerdo con su relación con la movilidad.
+						(Se entrega solamente la red estructurante, compuesta por toda la red principal junto con la red secundaria (local) que tenga; o pavimento singular, y/o sea límite de distrito, y/o transcurra por ella línea de autobús urbano).
+          		
+		-REDVIARIA 		: (METROPOLITANA / URBANA / DISTRITAL / LOCAL). Es la tipología de la red viaria. La red viaria principal es aquella que, por su condición funcional, sus características de diseño,
+						su intensidad circulatoria o sus actividades asociadas sirve para posibilitar la movilidad y accesibilidad metropolitana, urbana y distrital.
+						La red viaria principal se corresponde con la red viaria incluida como Sistema General en el Plano de Red Viaria (RV) del PGOUM.
+						La red viaria secundaria, es aquella que tiene un carácter marcadamente local.Está compuesta por el resto de los elementos viarios y su función primordial es el acceso a los usos situados en sus márgenes.
+          		
+		-EMT			: (SI / NO). Determina si por esa entidad transcurre/n línea/s de autobuses urbanos.
+          		
+		-AMBSINGU 		: (SI / NO). Entidad perteneciente a una vía o espacio público singular, por su relevancia patrimonial e histórica o por las características de su urbanización (utilización de materiales no habituales, mobiliario no homologado, etc.).
+          		
+		-TIPODEUSO 		: (SEPARADO / COEXISTENCIAL / PEATONAL). Hace referencia a la categoría y tipo de plataforma reservada. Exclusivas (uso separado), las que contando con algún tipo de barrera física que las aísla del resto,
+						se utilizan exclusivamente por el modo de transporte para el que están destinadas.adas en la red viaria Integradas en la red viaria (coexistencia),	las que utilizan una parte o banda de la red viaria,
+						sin separación física del resto y que puede ser, eventualmente, utilizada por modos diferentes al que en principio están destinadaPeatonales: si el ámbito es totalmente peatonal.
+          		
+		-CAR_BUS 		: (SI / NO). Indica si la entidad calzada es un CARRIL BUS o no lo es.
+          		
+		-AREA 			: Superficie en m2 de cada entidad.
+				
+	ACERAS : Capa con las entidades de aceras pertenecientes a la RED ESTRUCTURANTE. Repite los principales campos de la capa de Calzadas y ademas:
+          		
+		-SUBVIA 		: El código del subvial normalizado de la cartografía oficial de la que procede la entidad. Los códigos de las aceras se corresponden con la cartografía del 2016.
